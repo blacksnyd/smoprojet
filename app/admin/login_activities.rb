@@ -18,4 +18,7 @@ ActiveAdmin.register LoginActivity do
     column :longitude
     column :created_at
   end
+
+  actions :index
+
 end
