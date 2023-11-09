@@ -7,10 +7,6 @@ class User < ApplicationRecord
   has_and_belongs_to_many :guardings
   belongs_to :admin_user, optional: true
 
-  def name
-    email
-  end
-
   def within_one_km_of_guarding?(guarding)
     user_coordinates = [self.login_activities.latitude, self.login_activities.longitude]
     guarding_coordinates = [guarding.latitude, guarding.longitude]
@@ -20,4 +16,7 @@ class User < ApplicationRecord
     distance * 1000 <= 1000 # Check if the distance is less than or equal to 1 km
   end
 
+  def name
+    email
+  end
 end
