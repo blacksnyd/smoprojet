@@ -1,14 +1,19 @@
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <%= notice %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
+ <script data-turbo-temporary>
+    Swal.fire({
+    title: 'Parfait',
+    text: '<%= notice.html_safe %>',
+    icon: 'success',
+    })
+ </script>
 <% end %>
+
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
+ <script data-turbo-temporary>
+    Swal.fire({
+    title: 'Attention',
+    text: '<%= alert.html_safe %>',
+    icon: 'error',
+    })
+ </script>
 <% end %>
