@@ -9,9 +9,9 @@ class User < ApplicationRecord
 
   def within_one_km_of_guarding?(guarding)
     user_coordinates = [
-      current_user.login_activities.each do |item|
-        item.login_activities.latitude
-        item.login_activities.longitude
+      self.login_activities.each do |coordinate|
+        coordinate.login_activities.latitude
+        coordinate.login_activities.longitude
       end
 
     ]
