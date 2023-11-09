@@ -1,5 +1,5 @@
 ActiveAdmin.register Guarding do
-  permit_params :address, user_ids: []
+  permit_params :address, :latitude, :longitude, user_ids: []
 
   index do
     selectable_column
@@ -23,6 +23,8 @@ ActiveAdmin.register Guarding do
     f.inputs do
       f.input :address
       f.input :users
+      f.input :latitude
+      f.input :longitude
     end
     f.actions
   end
