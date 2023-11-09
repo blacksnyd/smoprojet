@@ -19,6 +19,6 @@ ActiveAdmin.register LoginActivity do
     column :created_at
   end
 
-  actions :index
+  actions :all
 
 end
