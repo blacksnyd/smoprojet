@@ -8,17 +8,12 @@ class User < ApplicationRecord
   belongs_to :admin_user, optional: true
 
   def within_one_km_of_guarding?(guarding)
-    user_coordinates = [
-      self.login_activities.each do |item|
-        item.latitude
-        item.longitude
-      end
-    ]
+    user_coordinates = [self.login_activities.latitude, self.login_activities.longitude]
     guarding_coordinates = [guarding.latitude, guarding.longitude]
 
     distance = Geocoder::Calculations.distance_between(user_coordinates, guarding_coordinates)
 
-    distance * 1000 <= 1000 # Check if the distance is less than or equal to 1 km
+    distance * 50000 <= 50000 # Check if the distance is less than or equal to 1 km
   end
 
   def name
