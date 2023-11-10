@@ -1,25 +1,25 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  geocoded_by :current_sign_in_ip
+  after_validation :geocode, if: :will_save_change_to_current_sign_in_ip?
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :trackable
+
   has_many :login_activities, as: :user # use :user no matter what your model name
   has_and_belongs_to_many :guardings
   belongs_to :admin_user, optional: true
 
   def within_one_km_of_guarding?(guarding)
     user_coordinates = [
-      self.login_activities.each do |coordinate|
-        coordinate.login_activities.latitude
-        coordinate.login_activities.longitude
-      end
-
+      self.latitude,
+      self.longitude
     ]
     guarding_coordinates = [guarding.latitude, guarding.longitude]
 
     distance = Geocoder::Calculations.distance_between(user_coordinates, guarding_coordinates)
 
-    distance * 50000 <= 50000 # Check if the distance is less than or equal to 1 km
+    distance * 1000 <= 1000 # Check if the distance is less than or equal to 1 km
   end
 
   def name
