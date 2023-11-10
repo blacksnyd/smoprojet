@@ -12,8 +12,8 @@ class User < ApplicationRecord
 
   def within_one_km_of_guarding?(guarding)
     user_coordinates = [
-      self.latitude,
-      self.longitude
+      request.location.latitude,
+      request.location.longitude
     ]
     guarding_coordinates = [guarding.latitude, guarding.longitude]
 
