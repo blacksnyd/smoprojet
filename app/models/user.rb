@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   geocoded_by :current_sign_in_ip
-  after_validation :geocode, if: :will_save_change_to_current_sign_in_ip?
+  after_validation :geocode, if: :current_sign_in_ip_changed?
 
-  devise :database_authenticatable, :registerable,
+    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable
 
