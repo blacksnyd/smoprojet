@@ -1,3 +1,8 @@
 <% Guarding.all.each do |item| %>
   <%= link_to item.address, item %>
 <% end %>
+
+<%=
+     request.location.latitude,
+     request.location.longitude
+%>
