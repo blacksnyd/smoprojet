@@ -1,7 +1,6 @@
 ActiveAdmin.register LoginActivity do
-  menu parent: 'Users', priority: 2
+  menu label: "Activité de connexion"
   index do
-    column :id
     column :identity
     column :user
     column :scope
@@ -18,7 +17,6 @@ ActiveAdmin.register LoginActivity do
     column :latitude
     column :longitude
     column :created_at
-    actions
   end
-  actions :all
+  actions :index
 end

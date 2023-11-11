@@ -7,6 +7,7 @@ gem "authtrail"
 gem "geocoder"
 gem "activeadmin"
 gem 'arctic_admin'
+gem "uuid"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 

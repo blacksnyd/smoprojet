@@ -1,10 +1,9 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :latitude, :longitude
+  menu label: "Utilisateurs"
+  permit_params :email, :password, :password_confirmation
   index do
     selectable_column
-    id_column
     column :email
-    column :admin_user
     column "Created by", :admin_user
     column :created_at
     actions
@@ -32,8 +31,6 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.input :latitude
-      f.input :longitude
     end
     f.actions
   end

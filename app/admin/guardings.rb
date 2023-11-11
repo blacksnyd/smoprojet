@@ -1,11 +1,12 @@
 ActiveAdmin.register Guarding do
-  permit_params :address, :latitude, :longitude, user_ids: []
+  menu label: "Gardiennages"
+  permit_params :address, :presence, :latitude, :longitude, user_ids: []
 
   index do
     selectable_column
-    id_column
     column :address
     column :users
+    column :presence
     column "Created by", :admin_user
     column :created_at
     actions
@@ -23,6 +24,7 @@ ActiveAdmin.register Guarding do
     f.inputs do
       f.input :address
       f.input :users
+      f.input :presence
       f.input :latitude
       f.input :longitude
     end

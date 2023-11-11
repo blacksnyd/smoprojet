@@ -1,1 +1,5 @@
-<%= @message %>
+<% if @user.within_one_km_of_guarding?(@guarding) %>
+  <%= link_to "Signer", edit_guarding_path, class: "btn btn-large btn-warning text-white" %>
+<% else %>
+  <p>Vous n'êtes pas assez proche du lieu de gardiennage</p>
+<% end %>
