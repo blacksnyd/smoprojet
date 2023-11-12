@@ -1,16 +1,22 @@
 class GuardingsController < ApplicationController
   def show
-    @user = current_user # Assuming you have a current_user method
-    @guarding = Guarding.find(params[:id]) # Assuming you have the restaurant's ID
+    @user = current_user
+    @guarding = Guarding.find(params[:id])
   end
 
   def edit
     @guarding = Guarding.find(params[:id])
-    if @guarding.presence
-      flash[:alert] = "Vous ne pouvez pas modifier un gardiennage en cours"
-      redirect_to guarding_path(@guarding)
+    @user = current_user
+    if @user.within_one_km_of_guarding?(@guarding)
+      if @guarding.presence
+        flash[:alert] = "Vous ne pouvez pas modifier un gardiennage en cours"
+        redirect_to guarding_path(@guarding)
+      else
+        @guarding = Guarding.find(params[:id])
+      end
     else
-      @guarding = Guarding.find(params[:id])
+      flash[:alert] = "Vous devez être à moins de 1km du gardiennage pour pouvoir le modifier"
+      redirect_to guarding_path(@guarding)
     end
   end
 
