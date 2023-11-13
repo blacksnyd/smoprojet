@@ -6,6 +6,8 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "SMO - Admin"
   config.footer = "SMO - #{Time.now.year}"
+  config.site_title_image = "logo.png"
+  config.favicon = "favicon.ico"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

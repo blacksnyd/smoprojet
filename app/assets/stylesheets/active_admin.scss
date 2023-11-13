@@ -10,8 +10,12 @@
 // Active Admin's got SASS!
 @import "arctic_admin/base";
 
-
-// Overriding any non-variable Sass must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
+#header {
+  a.logo {
+    background: url("https://smo.ci/assets/images/logo/8.png") no-repeat center center;
+    background-size: contain;
+    height: 44px; /* Adjust the height as needed */
+    width: 44px; /* Adjust the width as needed */
+    text-indent: -9999px;
+  }
+}

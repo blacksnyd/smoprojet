@@ -8,7 +8,9 @@ ActiveAdmin.register AdminUser do
     column "Created by", :admin_user
     column :created_at
     actions
+
   end
+
 
   filter :email
   filter :created_at
